@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Set a goal!</title>
+</head>
+<body>
+<H2>What is your goal?</H2>
+<form action="#" th:action="@{/configGoal}" th:object="${goal}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <input type="hidden" th:field="*{startDate}"/>
+    <input type="hidden" th:field="*{endDate}"/>
+    Goal
+    <!--input type="text" th:field="*{type}"/-->
+    <select th:field="*{type}">
+        <option th:each="type : ${T(com.github.shanecba.capstone.types.GoalType).values()}" th:value="${type}" th:text="${type}"/>
+    </select>
+    Target
+    <input type="number" th:field="*{target}"/>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+</form>
+</body>
+</html>

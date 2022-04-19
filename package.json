@@ -1,0 +1,29 @@
+{
+  "name": "capstone-frontend",
+  "version": "1.0.0",
+  "description": "Front end for the capstone application",
+  "scripts": {
+    "watch": "webpack --watch -d --output ./target/classes/static/built/bundle.js"
+  },
+  "author": "Shane Robertson",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@reduxjs/toolkit": "^1.8.1",
+    "babel-loader": "^8.2.4",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-modal": "^3.14.4",
+    "react-redux": "^8.0.0",
+    "react-router-dom": "^5.3.1",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1",
+    "regenerator-runtime": "^0.13.9"
+  },
+  "devDependencies": {
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
+  }
+}

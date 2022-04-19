@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+
+</head>
+<body>
+<script>
+var x;
+const handler = Plaid.create({
+  token: '[[${linkToken}]]',
+  onSuccess: (public_token, metadata) => {
+    x=metadata;
+    console.log("SUCCESS",public_token, metadata)
+    data = {
+      public_token: public_token,
+      accounts: JSON.stringify(metadata.accounts),
+      institution: metadata.institution,
+      link_session_id: metadata.link_session_id,
+    }
+    params = new URLSearchParams(data);
+    fetch('/plaid/getAccessToken?'+params.toString(), {
+      method: 'POST'
+    }).then(e=>location.href = "/");
+  },
+  onLoad: () => {},
+  onExit: (err, metadata) => {},
+  onEvent: (eventName, metadata) => {}
+});
+handler.open();
+</script>
+</body>
+</html>
